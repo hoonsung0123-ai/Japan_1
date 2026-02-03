@@ -38,5 +38,12 @@ npm start
 
 ## 연락하기만 쓰지 않고 퀴즈만 볼 때
 
-`index.html`을 브라우저에서 직접 열면 퀴즈만 사용할 수 있습니다.  
+`public/index.html`을 브라우저에서 직접 열면 퀴즈만 사용할 수 있습니다.  
 연락하기 제출은 **서버를 띄운 뒤** `http://localhost:3000` 에서만 동작합니다.
+
+## Vercel 배포
+
+이 프로젝트는 Vercel에 배포할 수 있습니다. GitHub 저장소를 Vercel에 연결하면 자동 배포됩니다.
+
+- **정적 파일**: `public/` 폴더 (index.html, style.css, script.js)
+- **연락하기 API**: Vercel 프로젝트 설정 → Environment Variables에 `RESEND_API_KEY` 추가

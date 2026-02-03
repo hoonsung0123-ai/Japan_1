@@ -11,7 +11,8 @@ const TO_EMAIL = "hoonsung0123@naver.com";
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+// Vercel는 public/을 CDN으로 제공. 로컬에서는 express.static 사용
+app.use(express.static(path.join(__dirname, "public")));
 
 if (!RESEND_API_KEY) {
   console.warn("⚠ RESEND_API_KEY가 .env에 없습니다. 연락하기 API는 동작하지 않습니다.");
@@ -74,7 +75,12 @@ function escapeHtml(str) {
   return str.replace(/[&<>"']/g, (c) => map[c]);
 }
 
-app.listen(PORT, () => {
-  console.log(`서버: http://localhost:${PORT}`);
-  console.log(`연락 메일 수신: ${TO_EMAIL}`);
-});
+// Vercel 서버리스에서는 listen 호출 안 함
+if (process.env.VERCEL !== "1") {
+  app.listen(PORT, () => {
+    console.log(`서버: http://localhost:${PORT}`);
+    console.log(`연락 메일 수신: ${TO_EMAIL}`);
+  });
+}
+
+module.exports = app;

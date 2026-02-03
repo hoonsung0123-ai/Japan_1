@@ -2,9 +2,9 @@
   "name": "japanese-quiz",
   "version": "1.0.0",
   "description": "일본어 단어 퀴즈 + 연락하기 (Resend)",
-  "main": "server.js",
+  "main": "local-server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node local-server.js",
     "dev": "node server.js"
   },
   "dependencies": {
